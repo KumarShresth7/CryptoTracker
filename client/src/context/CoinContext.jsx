@@ -16,12 +16,14 @@ const CoinContextProvider = (props) =>{
               accept: 'application/json',
               'x-cg-demo-api-key': 'CG-cHx3YmWjLZDEs4kts4K7gqFN	'
             }
-          };
-          
-          fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`, options)
-            .then(response => response.json())
-            .then(response => setAllCoin(response))
-            .catch(err => console.error(err));
+          }
+          try {
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`, options);
+            const data = await response.json();
+            setAllCoin(data);
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 
@@ -30,7 +32,7 @@ const CoinContextProvider = (props) =>{
     },[currency])
 
 
-    const contextValue = ()=>{
+    const contextValue = {
         allCoin,currency,setCurrency
     }
 

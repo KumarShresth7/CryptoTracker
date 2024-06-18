@@ -12,13 +12,16 @@ const Navbar = () => {
     switch(e.target.value){
       case "usd":{
         setCurrency({name:'usd',symbol:"$"})
+        break;
       }
       case "eur":{
         setCurrency({name:'eur',symbol:"€"})
+        break;
       }
 
       case "inr":{
         setCurrency({name:'inr',symbol:"₹"})
+        break;
       }
 
       default:{
@@ -37,6 +40,7 @@ const Navbar = () => {
             <li>Features</li>
             <li>Pricing</li>
             <li>Blog</li>
+        </ul>
             <div className="nav-right">
                 <select onChange={currencyHandler}>
                     <option value = 'usd'>USD</option>
@@ -45,7 +49,6 @@ const Navbar = () => {
                 </select>
                 <button>Sign Up <img src={arrow_icon}/></button>
             </div>
-        </ul>
     </div>
   )
 }
